@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icons } from '../../assets/exports';
+import { Icons } from '../../assets/exports.jsx';
 
 const Navbar = ({ scrollToSection }) => {
     const [menuOpen, setMenuOpen] = useState(false);

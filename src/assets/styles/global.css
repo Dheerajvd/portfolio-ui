@@ -2,7 +2,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1c1c1c;
+    background-color: #333;
     color: #fff;
 }
 
@@ -27,7 +27,7 @@ p {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #252525;
+    background-color: #333;
     position: relative;
 }
 
@@ -62,13 +62,145 @@ p {
     cursor: pointer;
 }
 
+.landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 700px;
+    filter: grayscale(100%);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content .title {
+    font-size: 72px;
+}
+
+.highlight {
+    color: #f4a261;
+}
+
+.contact-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    color: #f4a261;
+    margin-top: 1rem;
+    border: 3px solid #f4a261;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.contact-btn:hover {
+    background-color: #f4a261;
+    color: #fff;
+}
+
+.social-links {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.social-links::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    width: 4px;
+    height: 140px;
+    background-color: #f4a261;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.social-links img {
+    width: 30px;
+    margin-bottom: 10px;
+}
+
+.about-details {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: calc(1492px - 12rem);
+    padding: 0px 6rem;
+}
+
+.about-details-text::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 6rem;
+    width: 60px;
+    height: 2px;
+    background-color: #f4a261;
+}
+
+.about-details-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 70px;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 3rem;
+    }
+
+    .hero-image {
+        margin-top: 2rem;
+    }
+
+    .hero-image img {
+        max-width: 80%;
+    }
+
+    .social-links {
+        right: 40px;
+        bottom: 40px;
+    }
+
+    .hero-content .title {
+        font-size: 48px;
+    }
+
+    .contact-btn {
+        font-size: 16px;
+        padding: 0.5rem 1.2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         flex-direction: column;
         position: absolute;
         top: 100%;
         right: 0;
-        background-color: #252525;
+        background-color: #333;
         width: 100%;
         text-align: right;
         padding: 1rem;
@@ -108,13 +240,61 @@ p {
         width: 24px;
         height: 24px;
     }
+
+    .hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-image img {
+        max-width: 70%;
+    }
+
+    .hero-content .title {
+        font-size: 36px;
+    }
+
+    .social-links {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .social-links img {
+        width: 18px;
+        margin-bottom: 10px;
+    }
+
+    .social-links::before {
+        content: '';
+        position: absolute;
+        top: -70px;
+        width: 4px;
+        height: 60px;
+        background-color: #f4a261;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contact-btn {
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+    }
+
+    .about-details-text::before {
+        width: 25px;
+    }
+    
+    .about-details-text {
+        margin-left: 30px;
+    }
 }
+
 
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -126,6 +306,7 @@ p {
         opacity: 1;
         transform: translateY(0);
     }
+
     to {
         opacity: 0;
         transform: translateY(-20px);
