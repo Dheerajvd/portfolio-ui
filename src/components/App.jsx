@@ -6,6 +6,8 @@ import Skills from './layouts/Skills';
 import Experience from './layouts/Experience';
 import Projects from './layouts/Projects';
 import Testimonials from './layouts/Testimonials';
+import ProjectDetails from './layouts/ProjectDetails';
+import ContactMe from './layouts/ContactMe';
 import NotFound from './common/Notfound';
 
 const App = () => {
@@ -15,7 +17,6 @@ const App = () => {
   const projectsRef = useRef(null);
   const testimonialsRef = useRef(null);
 
-  // Function to scroll to a specific section
   const scrollToSection = (section) => {
     switch (section) {
       case 'landing':
@@ -55,7 +56,7 @@ const App = () => {
                   <Skills showAll={false} />
                 </div>
                 <div ref={experienceRef}>
-                  <Experience showAll={false}/>
+                  <Experience showAll={false} />
                 </div>
                 <div ref={projectsRef}>
                   <Projects />
@@ -63,14 +64,15 @@ const App = () => {
                 <div ref={testimonialsRef}>
                   <Testimonials />
                 </div>
+                <div><ContactMe /></div>
               </>
             }
           />
 
           <Route path="/skills" element={<Skills showAll={true} />} />
-          <Route path="/experience" element={<Experience showAll={true}/>} />
-          <Route path="/projects" element={<Projects />} />
-
+          <Route path="/experience" element={<Experience showAll={true} />} />
+          <Route path="/projects" element={<Projects showAll={true} />} />
+          <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

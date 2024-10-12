@@ -8,6 +8,10 @@ import WhatsApp from './icons/whatsapp.svg';
 import Medium from './icons/medium.svg';
 import ArrowRight from './icons/arrow-right.svg';
 import ArrowLeft from './icons/arrow-left.svg';
+import ArrowUp from './icons/chevron-circle-up.svg';
+import Mail from './icons/mail.svg';
+import Message from './icons/message-circle.svg';
+import Location from './icons/location-1.svg'
 
 export const Icons = {
     close: closeIcon,
@@ -19,5 +23,9 @@ export const Icons = {
     whatsApp: WhatsApp,
     instagram: Instagram,
     arrowRight: ArrowRight,
-    arrowLeft: ArrowLeft
+    arrowLeft: ArrowLeft,
+    arrowUp: ArrowUp,
+    mail: Mail,
+    message: Message,
+    location: Location
 };

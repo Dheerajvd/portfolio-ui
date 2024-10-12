@@ -45,9 +45,9 @@ const Experience = ({ showAll }) => {
         <div className="contents-header">
           <h2>Experience</h2>
           {showAll ? <Link to="/" className="view-more">
-            Go Back <img src={Icons.arrowLeft} alt="arrow-left" className='arrow-icon' />
+            <img src={Icons.arrowLeft} alt="arrow-left" className='arrow-icon' />&nbsp;Go Back
           </Link> : <Link to="/experience" className="view-more">
-            View More <img src={Icons.arrowRight} alt="arrow-right" className='arrow-icon' />
+            <img src={Icons.arrowRight} alt="arrow-right" className='arrow-icon' />&nbsp;View More
           </Link>}
         </div>
         <div className="timeline">
