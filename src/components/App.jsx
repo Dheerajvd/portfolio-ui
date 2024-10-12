@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './common/Navbar';
 import Landing from './layouts/Landing';
 import Skills from './layouts/Skills';
 import Experience from './layouts/Experience';
 import Projects from './layouts/Projects';
 import Testimonials from './layouts/Testimonials';
+import NotFound from './common/Notfound';
 
 const App = () => {
   // Create refs for each section
@@ -38,29 +40,32 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Navbar scrollToSection={scrollToSection} />
+    <Router>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Landing />
+                <Skills showAll={false} />
+                <Experience />
+                <Projects />
+                <Testimonials />
+              </>
+            }
+          />
 
-      <div ref={landingRef}>
-        <Landing />
-      </div>
+          <Route path="/skills" element={<Skills showAll={true} />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/testimonials" element={<Testimonials />} />
 
-      <div ref={skillsRef}>
-        <Skills />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
-
-      <div ref={experienceRef}>
-        <Experience />
-      </div>
-
-      <div ref={projectsRef}>
-        <Projects />
-      </div>
-
-      <div ref={testimonialsRef}>
-        <Testimonials />
-      </div>
-    </div>
+    </Router>
   );
 };
 

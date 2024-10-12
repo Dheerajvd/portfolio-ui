@@ -62,7 +62,7 @@ p {
     cursor: pointer;
 }
 
-.landing{
+.landing {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,7 +121,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
 .social-links::before {
     content: '';
@@ -162,6 +162,110 @@ p {
     align-items: center;
     justify-content: center;
     margin-left: 70px;
+}
+
+.skills {
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    color: #fff;
+}
+
+.skills-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.skills-header h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.view-more {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.5s ease;
+}
+
+.view-more:hover {
+    color: #f4a261;
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    fill: currentColor;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.skill-item {
+    background-color: #252525;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.skill-item:hover {
+    background-color: #f4a261;
+}
+
+.skill-image {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skill-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 130px);
+    text-align: center;
+    padding: 20px;
+}
+
+.home-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid #f4a261;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.home-button:hover {
+    background-color: #f4a261;
 }
 
 @media (max-width: 1024px) {
@@ -282,9 +386,21 @@ p {
     .about-details-text::before {
         width: 25px;
     }
-    
+
     .about-details-text {
         margin-left: 30px;
+    }
+
+    .home-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
     }
 }
 

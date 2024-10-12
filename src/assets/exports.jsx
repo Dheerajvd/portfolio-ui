@@ -6,6 +6,8 @@ import Instagram from './icons/instagram.svg';
 import LinkedIn from './icons/linkedin.svg';
 import WhatsApp from './icons/whatsapp.svg';
 import Medium from './icons/medium.svg';
+import ArrowRight from './icons/arrow-right.svg';
+import ArrowLeft from './icons/arrow-left.svg';
 
 export const Icons = {
     close: closeIcon,
@@ -15,5 +17,7 @@ export const Icons = {
     linedIn: LinkedIn,
     medium: Medium,
     whatsApp: WhatsApp,
-    instagram: Instagram
+    instagram: Instagram,
+    arrowRight: ArrowRight,
+    arrowLeft: ArrowLeft
 };
