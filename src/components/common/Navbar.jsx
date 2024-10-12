@@ -6,7 +6,6 @@ const Navbar = ({ scrollToSection }) => {
 
     const toggleMenu = () => {
         if (menuOpen) {
-            console.log("calling this while closing")
             setTimeout(() => {
                 setMenuOpen(false);
             }, 0);

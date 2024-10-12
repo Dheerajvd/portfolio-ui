@@ -9,7 +9,6 @@ import Testimonials from './layouts/Testimonials';
 import NotFound from './common/Notfound';
 
 const App = () => {
-  // Create refs for each section
   const landingRef = useRef(null);
   const skillsRef = useRef(null);
   const experienceRef = useRef(null);
@@ -20,19 +19,19 @@ const App = () => {
   const scrollToSection = (section) => {
     switch (section) {
       case 'landing':
-        landingRef.current.scrollIntoView({ behavior: 'smooth' });
+        landingRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case 'skills':
-        skillsRef.current.scrollIntoView({ behavior: 'smooth' });
+        skillsRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case 'experience':
-        experienceRef.current.scrollIntoView({ behavior: 'smooth' });
+        experienceRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case 'projects':
-        projectsRef.current.scrollIntoView({ behavior: 'smooth' });
+        projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case 'testimonials':
-        testimonialsRef.current.scrollIntoView({ behavior: 'smooth' });
+        testimonialsRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       default:
         break;
@@ -42,17 +41,28 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar scrollToSection={scrollToSection} />
+
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <Landing />
-                <Skills showAll={false} />
-                <Experience />
-                <Projects />
-                <Testimonials />
+                <div ref={landingRef}>
+                  <Landing />
+                </div>
+                <div ref={skillsRef}>
+                  <Skills showAll={false} />
+                </div>
+                <div ref={experienceRef}>
+                  <Experience />
+                </div>
+                <div ref={projectsRef}>
+                  <Projects />
+                </div>
+                <div ref={testimonialsRef}>
+                  <Testimonials />
+                </div>
               </>
             }
           />
