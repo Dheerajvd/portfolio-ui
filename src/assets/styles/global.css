@@ -164,7 +164,7 @@ p {
     margin-left: 70px;
 }
 
-.skills {
+.contents-page {
     padding: 4rem 2rem;
     display: flex;
     align-items: center;
@@ -174,7 +174,7 @@ p {
     color: #fff;
 }
 
-.skills-header {
+.contents-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -182,7 +182,7 @@ p {
     max-width: 1200px;
 }
 
-.skills-header h2 {
+.contents-header h2 {
     margin: 0;
     font-size: 2rem;
 }
@@ -268,6 +268,144 @@ p {
     background-color: #f4a261;
 }
 
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    max-width: 800px;
+    width: 100%;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 4rem;
+}
+
+.timeline-marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #f4a261;
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+    border: 2px solid #f4a261;
+    box-shadow: 0 0 8px rgba(240, 180, 0, 0.8);
+}
+
+.timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #f4a261;
+    top: 1rem;
+    left: 1.5rem;
+    height: calc(100% + 2rem);
+}
+
+.timeline-content {
+    padding-left: 2rem;
+}
+
+.timeline-item h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.timeline-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.year-badge {
+    background-color: #252525;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 5px;
+    position: absolute;
+    left: -60px;
+    top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.year-show {
+    display: none;
+}
+
+ol {
+    padding-inline-start: 14px;
+}
+
+.testimonial-carousel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.testimonial-content {
+    max-width: 800px;
+    text-align: left;
+}
+
+.testimonial-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #f4a261;
+}
+
+.testimonial-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.testimonial-line {
+    width: 50px;
+    height: 3px;
+    background-color: #f4a261;
+    margin-bottom: 20px;
+}
+
+.author-name {
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+.author-role {
+    font-size: 1rem;
+    color: #f4a261;
+    margin-top: 5px;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #f4a261;
+}
+
 @media (max-width: 1024px) {
     .hero {
         flex-direction: column;
@@ -296,6 +434,14 @@ p {
         font-size: 16px;
         padding: 0.5rem 1.2rem;
     }
+
+    .year-badge.hide {
+        display: none;
+    }
+
+    .year-show {
+        display: inline;
+    }
 }
 
 @media (max-width: 768px) {
@@ -307,11 +453,12 @@ p {
         background-color: #333;
         width: 100%;
         text-align: right;
-        padding: 1rem;
+        padding: 1rem 2rem;
         margin: 0;
         opacity: 0;
         transform: translateY(-20px);
         animation: none;
+        z-index: 1;
     }
 
     .logo-img {
@@ -395,6 +542,26 @@ p {
         font-size: 0.9rem;
         padding: 8px 16px;
     }
+
+    .testimonial-carousel-container {
+        padding: 30px 15px;
+    }
+
+    .testimonial-title {
+        font-size: 2rem;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .author-name {
+        font-size: 1.2rem;
+    }
+
+    .author-role {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -403,7 +570,6 @@ p {
         padding: 6px 12px;
     }
 }
-
 
 @keyframes slideIn {
     from {

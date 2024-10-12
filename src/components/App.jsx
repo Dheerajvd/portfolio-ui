@@ -55,7 +55,7 @@ const App = () => {
                   <Skills showAll={false} />
                 </div>
                 <div ref={experienceRef}>
-                  <Experience />
+                  <Experience showAll={false}/>
                 </div>
                 <div ref={projectsRef}>
                   <Projects />
@@ -68,9 +68,8 @@ const App = () => {
           />
 
           <Route path="/skills" element={<Skills showAll={true} />} />
-          <Route path="/experience" element={<Experience />} />
+          <Route path="/experience" element={<Experience showAll={true}/>} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/testimonials" element={<Testimonials />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

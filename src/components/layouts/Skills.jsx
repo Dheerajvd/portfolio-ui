@@ -79,8 +79,8 @@ const Skills = ({ showAll }) => {
   ]
   return (
     <>
-      <div className="skills">
-        <div className="skills-header">
+      <div className="contents-page">
+        <div className="contents-header">
           <h2>My Skills</h2>
           {showAll ? <Link to="/" className="view-more">
             Go Back <img src={Icons.arrowLeft} alt="arrow-left" className='arrow-icon' />
@@ -102,7 +102,5 @@ const Skills = ({ showAll }) => {
     </>
   );
 };
-
-// View More <ArrowIcon className="arrow-icon" />
 
 export default Skills;
