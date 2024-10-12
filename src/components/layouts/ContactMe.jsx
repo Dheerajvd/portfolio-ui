@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './contactme.css';
 import { Icons } from '../../assets/exports';
 
 const ContactMe = () => {

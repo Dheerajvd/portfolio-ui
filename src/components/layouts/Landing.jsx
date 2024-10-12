@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icons } from '../../assets/exports.jsx';
 
-const Landing = () => {
+const Landing = ({ scrollToSection }) => {
   return (
     <>
       <div className="landing">
@@ -11,7 +11,7 @@ const Landing = () => {
               I'm <span className="highlight">Dheeraj Dalabanjan</span>
             </h1>
             <p>Fullstack Developer</p>
-            <button className="contact-btn">Contact Me</button>
+            <button className="contact-btn" onClick={() => { scrollToSection('contact-me') }}>Contact Me</button>
           </div>
           <div className="hero-image">
             <img src={Icons.myImage} alt="Dheeraj V Dalabanjan" />

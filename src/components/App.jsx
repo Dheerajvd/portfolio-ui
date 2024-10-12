@@ -16,6 +16,7 @@ const App = () => {
   const experienceRef = useRef(null);
   const projectsRef = useRef(null);
   const testimonialsRef = useRef(null);
+  const contactMeRef = useRef(null)
 
   const scrollToSection = (section) => {
     switch (section) {
@@ -34,6 +35,9 @@ const App = () => {
       case 'testimonials':
         testimonialsRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
+      case 'contact-me':
+        contactMeRef.current?.scrollIntoView({ behavior: 'smooth' });
+        break;
       default:
         break;
     }
@@ -50,7 +54,7 @@ const App = () => {
             element={
               <>
                 <div ref={landingRef}>
-                  <Landing />
+                  <Landing scrollToSection={scrollToSection} />
                 </div>
                 <div ref={skillsRef}>
                   <Skills showAll={false} />
@@ -64,7 +68,9 @@ const App = () => {
                 <div ref={testimonialsRef}>
                   <Testimonials />
                 </div>
-                <div><ContactMe /></div>
+                <div ref={contactMeRef}>
+                  <ContactMe />
+                </div>
               </>
             }
           />
