@@ -9,6 +9,7 @@ import Testimonials from './layouts/Testimonials';
 import ProjectDetails from './layouts/ProjectDetails';
 import ContactMe from './layouts/ContactMe';
 import NotFound from './common/Notfound';
+import SomethingWrong from './common/SomethingWrong';
 
 const App = () => {
   const landingRef = useRef(null);
@@ -79,6 +80,7 @@ const App = () => {
           <Route path="/experience" element={<Experience showAll={true} />} />
           <Route path="/projects" element={<Projects showAll={true} />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
+          <Route path="/something-went-wrong" element={<SomethingWrong />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

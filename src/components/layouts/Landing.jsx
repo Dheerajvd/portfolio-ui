@@ -1,32 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icons } from '../../assets/exports.jsx';
+import { useNavigate } from 'react-router-dom';
+import { endpoints } from '../../api/endpoints.js';
+import { getApi } from '../../api/index.js';
+
 
 const Landing = ({ scrollToSection }) => {
+  const [data, setData] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getApi(endpoints.GET_LANDING).then((response) => {
+      const resp = response.data;
+      if (resp.statusCode === 200) {
+        setData(resp.landingPageDetails);
+      } else {
+        navigate('/something-went-wrong');
+      }
+    }, (error) => {
+      console.error('Error during API calls:', error);
+      navigate('/something-went-wrong');
+    });
+  }, [])
+
   return (
     <>
       <div className="landing">
         <header className="hero">
           <div className="hero-content">
             <h1 className="title">
-              I'm <span className="highlight">Dheeraj Dalabanjan</span>
+              I'm <span className="highlight">{data?.ui?.title}</span>
             </h1>
-            <p>Fullstack Developer</p>
+            <p>{data?.ui?.role}</p>
             <button className="contact-btn" onClick={() => { scrollToSection('contact-me') }}>Contact Me</button>
           </div>
           <div className="hero-image">
             <img src={Icons.myImage} alt="Dheeraj V Dalabanjan" />
           </div>
           <div className="social-links">
-            <a target="_blank" href="https://www.linkedin.com/in/dheeraj-v-dalabanjan-535540211/"><img src={Icons.linedIn} alt="Linked In" /></a>
-            <a target="_blank" href="https://www.instagram.com/dheeraj__d/"><img src={Icons.instagram} alt="Instagram" /></a>
-            <a target="_blank" href="https://medium.com/@dheeraj.dalabanjan"><img src={Icons.medium} alt="Medium" /></a>
-            <a target="_blank" href="https://wa.me/+919113241023"><img src={Icons.whatsApp} alt="WhatsApp" /></a>
+            <a target="_blank" href={data?.links?.linkedin}><img src={Icons.linedIn} alt="Linked In" /></a>
+            <a target="_blank" href={data?.links?.insta}><img src={Icons.instagram} alt="Instagram" /></a>
+            <a target="_blank" href={data?.links?.medium}><img src={Icons.medium} alt="Medium" /></a>
+            <a target="_blank" href={data?.links?.whatsapp}><img src={Icons.whatsApp} alt="WhatsApp" /></a>
           </div>
         </header>
 
         <div className="about-details">
           <h2>About</h2>
-          <p className='about-details-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>
+          <p className='about-details-text'>{data?.about}</p>
         </div>
       </div>
     </>
