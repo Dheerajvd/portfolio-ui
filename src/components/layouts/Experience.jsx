@@ -1,44 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Icons } from '../../assets/exports';
 import Timeline from '../common/Timeline';
+import { useNavigate } from 'react-router-dom';
+import { endpoints } from '../../api/endpoints.js';
+import { getApi } from '../../api/index.js';
 
 const Experience = ({ showAll }) => {
-  const timeLines = [
-    {
-      id: 1,
-      startYear: "2021",
-      jobTitle: "Software Engineer",
-      jobLocation: "Pune, India",
-      jobDescription: [
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 1 },
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 2 },
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 3 }
-      ]
-    },
-    {
-      id: 2,
-      startYear: "2021",
-      jobTitle: "Software Engineer",
-      jobLocation: "Pune, India",
-      jobDescription: [
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 1 },
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 2 },
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 3 }
-      ]
-    },
-    {
-      id: 3,
-      startYear: "2021",
-      jobTitle: "Software Engineer",
-      jobLocation: "Pune, India",
-      jobDescription: [
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 1 },
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 2 },
-        { desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus', id: 3 }
-      ]
-    },
-  ]
+  const [experiences, setExperiences] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getApi(endpoints.GET_EXPERIENCES).then((response) => {
+      const resp = response.data;
+      if (resp.statusCode === 200) {
+        setExperiences(resp.experiences);
+      } else {
+        navigate('/something-went-wrong');
+      }
+    }, (error) => {
+      console.error('Error during API calls:', error);
+      navigate('/something-went-wrong');
+    });
+  }, [])
+
   return (
     <>
       <div className="contents-page">
@@ -51,13 +36,13 @@ const Experience = ({ showAll }) => {
           </Link>}
         </div>
         <div className="timeline">
-          {showAll ? timeLines
+          {showAll ? experiences
             .map((timeline) => (
-              <Timeline key={timeline.id} timeline={timeline} />
-            )) : timeLines
+              <Timeline key={timeline._id} timeline={timeline} />
+            )) : experiences
               .slice(0, 2)
               .map((timeline) => (
-                <Timeline key={timeline.id} timeline={timeline} />
+                <Timeline key={timeline._id} timeline={timeline} />
               ))}
         </div>
       </div>

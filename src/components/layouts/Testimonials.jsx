@@ -1,33 +1,37 @@
 import React, { useState, useEffect } from 'react';
-
-const testimonials = [
-  {
-    text: 'The design quality, flexibility, documentation, and support are all absolutely excellent. I buy the Avada theme for all my clients, knowing that whatever they require, Avada will be able to deliver.',
-    author: 'Josef Sharon',
-    role: 'CEO, Omisoft',
-  },
-  {
-    text: 'Avada is a lifesaver. I build all my client sites with it and the support is second to none. Highly recommended!',
-    author: 'Sarah Lee',
-    role: 'Freelancer',
-  },
-  {
-    text: 'The flexibility and features that Avada provides is second to none. It’s my go-to solution for all my projects.',
-    author: 'Michael Chan',
-    role: 'Founder, ChanCorp',
-  },
-];
+import { useNavigate } from 'react-router-dom';
+import { endpoints } from '../../api/endpoints.js';
+import { getApi } from '../../api/index.js';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [testimonials, setTestimonials] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 6000);
+    getApi(endpoints.GET_TESTIONIALS).then((response) => {
+      const resp = response.data;
+      if (resp.statusCode === 200) {
+        setTestimonials(resp.testimonials);
+      } else {
+        navigate('/something-went-wrong');
+      }
+    }).catch((error) => {
+      console.error('Error during API calls:', error);
+      navigate('/something-went-wrong');
+    });
+  }, [navigate]);
 
-    return () => clearInterval(intervalId);
-  }, []);
+  // Start the carousel only when testimonials are fetched
+  useEffect(() => {
+    if (testimonials.length > 0) {
+      const intervalId = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      }, 6000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [testimonials]);
 
   const handleDotClick = (index) => {
     setCurrentIndex(index);
@@ -44,10 +48,10 @@ const Testimonials = () => {
           <div className="testimonial-text">
             <div className="testimonial-line"></div>
             <p>
-              <span>{testimonials[currentIndex].text}</span>
+              <span>{testimonials[currentIndex]?.text}</span>
             </p>
-            <p className="author-name">{testimonials[currentIndex].author}</p>
-            <p className="author-role">{testimonials[currentIndex].role}</p>
+            <p className="author-name">{testimonials[currentIndex]?.author}</p>
+            <p className="author-role">{testimonials[currentIndex]?.role}</p>
           </div>
         </div>
         <div className="dots-container">

@@ -560,6 +560,16 @@ ol {
     opacity: 0.8;
 }
 
+.project-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    max-height: 3em;
+    margin: 0;
+}
+
 @media (max-width: 1024px) {
     .hero {
         flex-direction: column;
