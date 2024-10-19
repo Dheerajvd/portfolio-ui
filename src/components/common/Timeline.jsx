@@ -6,7 +6,7 @@ const Timeline = ({ timeline }) => {
             <div className="year-badge hide">{timeline?.startYear}</div>
             <div className="timeline-marker"></div>
             <div className="timeline-content">
-                <h3>{timeline?.jobTitle}&nbsp;-&nbsp;<span className='year-show'>{timeline?.startYear}</span></h3>
+                <h3>{timeline?.jobTitle}<span className='year-show'>&nbsp;-&nbsp;{timeline?.startYear}</span></h3>
                 <p>{timeline?.jobCompany}&nbsp;[{timeline?.jobLocation}]</p>
                 <ol>
                     {timeline?.jobDescription.map((description)=>(
