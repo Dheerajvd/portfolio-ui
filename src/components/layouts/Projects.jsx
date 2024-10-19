@@ -25,7 +25,6 @@ const Projects = ({ showAll }) => {
 
     return (
         <div className="contents-page">
-            {console.log(projects)}
             <div className="contents-header">
                 <h2>Projects</h2>
                 {showAll ? <Link to="/" className="view-more">
